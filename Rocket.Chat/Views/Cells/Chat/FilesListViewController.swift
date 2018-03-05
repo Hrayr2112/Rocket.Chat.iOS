@@ -38,28 +38,12 @@ class FilesListViewController: UIViewController {
         guard let subscription = subscription else { return }
         let request = SubscriptionAttachmentsRequest(roomName: subscription.name, type: subscription.type)
         API.current()?.fetch(request, succeeded: { result in
-
             guard let files: Array = result.getFiles() else { return }
         }, errored: nil)
-    }
-
-    func getAttachments(_ message: Message!) {
-        for attachment in message.attachments {
-            let type = attachment.type
-
-            if type == .image {
-                // Create image in CollectionView
-            }
-
-            if type == .video {
-                // Create video in CollectionView
-            }
-        }
     }
 }
 
 extension FilesListViewController: UICollectionViewDelegate {
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     }
@@ -71,6 +55,7 @@ extension FilesListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         return UICollectionViewCell()
     }
 }
