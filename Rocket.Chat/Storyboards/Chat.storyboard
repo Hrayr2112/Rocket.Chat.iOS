@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8cV-un-sd9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8cV-un-sd9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +17,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OI3-Q7-WoS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2250" y="-2"/>
+        </scene>
+        <!--Files List View Controller-->
+        <scene sceneID="9TG-Z9-i0n">
+            <objects>
+                <viewController id="9ez-wZ-AVV" customClass="FilesListViewController" customModule="Rocket_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GPI-FX-5hE"/>
+                        <viewControllerLayoutGuide type="bottom" id="PgG-A4-hdr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zeb-99-rfd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M73-r7-lvh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VYk-1G-6pa">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3vs-eJ-jM3">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9ez-wZ-AVV" id="a9l-OY-Ms3"/>
+                                    <outlet property="delegate" destination="9ez-wZ-AVV" id="30f-YI-pzm"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="M73-r7-lvh" secondAttribute="trailing" id="0bz-3k-9Cr"/>
+                            <constraint firstItem="PgG-A4-hdr" firstAttribute="top" secondItem="M73-r7-lvh" secondAttribute="bottom" id="F4c-tr-m8d"/>
+                            <constraint firstItem="M73-r7-lvh" firstAttribute="top" secondItem="GPI-FX-5hE" secondAttribute="bottom" id="bn0-iE-i28"/>
+                            <constraint firstItem="M73-r7-lvh" firstAttribute="leading" secondItem="zeb-99-rfd" secondAttribute="leading" id="slB-qy-Ldj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="filesCollctionView" destination="M73-r7-lvh" id="MPW-ux-Nc0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cyt-b2-pZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3328.8000000000002" y="-51.724137931034484"/>
         </scene>
         <!--Rocket.Chat-->
         <scene sceneID="sPN-TU-rHY">
@@ -267,6 +320,7 @@
                         <outlet property="tableView" destination="BZN-WA-DFR" id="fMf-lW-s3T"/>
                         <segue destination="i6r-e5-U1B" kind="show" identifier="toMembersList" id="Dj3-vx-Ggd"/>
                         <segue destination="GAd-ch-6WH" kind="show" identifier="toMessagesList" id="199-n2-7WG"/>
+                        <segue destination="9ez-wZ-AVV" kind="show" identifier="toFilesList" id="5zm-G9-FJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Svt-7Y-y44" userLabel="First Responder" sceneMemberID="firstResponder"/>
