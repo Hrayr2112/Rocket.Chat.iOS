@@ -7,6 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
+
+extension APIResult where T == SubscriptionAttachmentsRequest {
+    func getFiles() -> [Attachment?]? {
+        return raw?["files"].arrayValue.map { json in
+            let attachment = Attachment()
+            attachment.map(json, realm: Realm.shared)
+            return attachment
+        }
+    }
+}
 
 class FilesListViewController: UIViewController {
 
@@ -25,10 +36,10 @@ class FilesListViewController: UIViewController {
 
     func getGroupMessages() {
         guard let subscription = subscription else { return }
-        let request = SubscriptionMessagesRequest(roomName: subscription.name, type: subscription.type)
+        let request = SubscriptionAttachmentsRequest(roomName: subscription.name, type: subscription.type)
         API.current()?.fetch(request, succeeded: { result in
 
-            guard let messages: Array = result.getMessages() else { return }
+            guard let files: Array = result.getFiles() else { return }
         }, errored: nil)
     }
 
